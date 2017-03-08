@@ -36,14 +36,17 @@ public class Barrier extends Point {
     if (p2.getX()-p1.getX() != 0) {
       double m = (p2.getY()-p1.getY())/(p2.getX()-p1.getX());
       double b = (p1.getY() - (m * p1.getX()));
-      return !((this.getY() < ((m * this.getX()) + b)&&
+      return (!(
+      (this.getY() < ((m * this.getX()) + b)&&
       (this.getY() + this.getH()) < ((m * this.getX()) + b)&&
       this.getY() < ((m * (this.getX() + this.getW())) + b)&&
       (this.getY() + this.getH()) < ((m * (this.getX() + this.getW())) + b))||
       (this.getY() > ((m * this.getX()) + b)&&
       (this.getY() + this.getH()) > ((m * this.getX()) + b)&&
       this.getY() > ((m * (this.getX() + this.getW())) + b)&&
-      (this.getY() + this.getH()) > ((m * (this.getX() + this.getW())) + b)));
+      (this.getY() + this.getH()) > ((m * (this.getX() + this.getW())) + b)))&&
+      ((this.getX() > p1.getX() && this.getX() < p2.getX())||(this.getX() > p2.getX() && this.getX() < p1.getX()))
+      );
     } else {
       return !((this.getX() < p1.getX()) || ((this.getX() + this.getW()) > p1.getX()));
     }
