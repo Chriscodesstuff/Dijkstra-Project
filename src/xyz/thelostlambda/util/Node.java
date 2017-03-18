@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 public class Node extends Point {
 //variables
-  protected Grid grid;
-  protected ArrayList<Node> neighbors = new ArrayList<Node>();
+  private Grid grid;
+  private ArrayList<Node> neighbors = new ArrayList<Node>();
 
 //constructors
   public Node (double x, double y) {
@@ -28,11 +28,16 @@ public class Node extends Point {
 //methods
   public void findNeighbors () {
     neighbors.clear();
+    boolean neighbor;
     for (Node node : this.getGrid().getNodes()) {
+      neighbor = true;
       for (Barrier barrier : this.getGrid().getBarriers()) {
-        if ((this!=node) && (!barrier.isBetween(this,node))) {
-          neighbors.add(node);
+        if ((this.equals(node)) || (barrier.isBetween(this,node))) {
+          neighbor = false;
         }
+      }
+      if (neighbor) {
+        neighbors.add(node);
       }
     }
   }

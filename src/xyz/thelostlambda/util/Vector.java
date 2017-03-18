@@ -8,12 +8,12 @@ public class Vector extends Tuple {
 
 //methods
   public void add (Tuple toAdd) {
-    this.x += toAdd.getX();
-    this.y += toAdd.getY();
+    this.setX(this.getX() + toAdd.getX());
+    this.setY(this.getY() + toAdd.getY());
   }
   public void scale (double scale) { //hypotenuse of triangle = scale
-    double angle = Math.atan2(this.y,this.x);
-    this.x = (scale*Math.cos(angle));
-    this.y = (scale*Math.sin(angle));
+    double angle = Math.atan2(this.getY(), this.getX());
+    this.setX(scale*Math.cos(angle));
+    this.setY(scale*Math.sin(angle));
   }
 }

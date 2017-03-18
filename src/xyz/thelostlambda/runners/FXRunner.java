@@ -24,18 +24,19 @@ public class FXRunner extends Application {
     //not animation stuff
     Grid grid = new Grid();
     grid.addBarrier(5,5,5,5);
+    grid.addBarrier(14,2,5,5);
+    grid.addBarrier(18,12,3,10);
     grid.addNode(1,1);
     grid.findNodeNeighbors();
+    System.out.println(grid);
     for (Node node : grid.getNodes()) {
-      root.getChildren().add(new Rectangle(node.getX()*10-5,node.getY()*10-5,10,10));
-      System.out.print("\nNode: " + node + "Neighbors: ");
+      root.getChildren().add(new Rectangle(node.getX()*10,node.getY()*10,1,1));
       for (Node neighbor : node.getNeighbors()) {
         root.getChildren().add(new Line(node.getX()*10,node.getY()*10,neighbor.getX()*10,neighbor.getY()*10));
-        System.out.print(neighbor + " ");
       }
     }
     for (Barrier barrier : grid.getBarriers()) {
-      Rectangle rect = new Rectangle(barrier.getX()*10-5,barrier.getY()*10-5,barrier.getW()*10+10,barrier.getH()*10+10);
+      Rectangle rect = new Rectangle(barrier.getX()*10,barrier.getY()*10,barrier.getW()*10,barrier.getH()*10);
       rect.setFill(Color.RED);
       root.getChildren().add(rect);
     }

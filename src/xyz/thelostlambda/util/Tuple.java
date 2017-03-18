@@ -2,8 +2,8 @@ package xyz.thelostlambda.util;
 
 public class Tuple {
 //variables
-  protected double x;
-  protected double y;
+  private double x;
+  private double y;
 
 //constructors
   public Tuple () {
@@ -29,9 +29,13 @@ public class Tuple {
   public void setY (double y) {
     this.y = y;
   }
-  
+
+//methods
   @Override
   public String toString () {
     return ("["+x+", "+y+"]");
+  }
+  public boolean equals (Tuple t) {
+    return (x == t.getX() && y == t.getY());
   }
 }
